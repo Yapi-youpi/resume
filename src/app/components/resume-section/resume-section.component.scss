@@ -1,0 +1,39 @@
+.resume-section {
+  margin-bottom: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+  }
+
+  &__title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--accent-color);
+    margin-top: 8px;
+  }
+
+  &__body {
+    color: var(--text-primary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
+}
+
+@media print {
+  .resume-section {
+    break-inside: avoid;
+  }
+  .resume-section__title {
+    margin-bottom: var(--space-sm);
+  }
+}

@@ -1,0 +1,32 @@
+<article class="project-item">
+  <div class="project-item__line" aria-hidden="true"></div>
+  <div class="project-item__content">
+    <header class="project-item__header">
+      <h3 class="project-item__title">
+        @if (data().link) {
+          <a [href]="data().link" class="project-item__link" target="_blank" rel="noopener noreferrer">{{ data().title }}</a>
+        } @else {
+          {{ data().title }}
+        }
+      </h3>
+      @if (data().role || data().period) {
+        <div class="project-item__meta">
+          @if (data().role) {
+            <span class="project-item__role">{{ data().role }}</span>
+          }
+          @if (data().period) {
+            <span class="project-item__period">{{ data().period }}</span>
+          }
+        </div>
+      }
+    </header>
+    <p class="project-item__description">{{ data().description }}</p>
+    @if (data().stack && data().stack!.length) {
+      <ul class="project-item__stack" role="list">
+        @for (tech of data().stack; track tech) {
+          <li class="project-item__stack-item">{{ tech }}</li>
+        }
+      </ul>
+    }
+  </div>
+</article>

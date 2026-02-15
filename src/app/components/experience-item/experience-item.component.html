@@ -1,0 +1,20 @@
+<article class="experience-item">
+  <div class="experience-item__line" aria-hidden="true"></div>
+  <div class="experience-item__content">
+    <header class="experience-item__header">
+      <h3 class="experience-item__role">{{ data().role }}</h3>
+      <div class="experience-item__meta">
+        <span class="experience-item__company">{{ data().company }}</span>
+        <span class="experience-item__period">{{ data().period }}</span>
+      </div>
+    </header>
+    <p class="experience-item__description">{{ data().description }}</p>
+    @if (data().stack && data().stack!.length) {
+      <ul class="experience-item__stack" role="list">
+        @for (tech of data().stack; track tech) {
+          <li class="experience-item__stack-item">{{ tech }}</li>
+        }
+      </ul>
+    }
+  </div>
+</article>

@@ -1,0 +1,22 @@
+.skill-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--accent-soft);
+  border: none;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(37, 99, 235, 0.12);
+  }
+}
+
+[data-theme='dark'] .skill-badge {
+  &:hover {
+    background: rgba(96, 165, 250, 0.18);
+  }
+}

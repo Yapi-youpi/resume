@@ -1,0 +1,19 @@
+<header class="resume-header">
+  <h1 class="resume-header__name">{{ data().name }}</h1>
+  <p class="resume-header__position">{{ data().position }}</p>
+  <ul class="resume-header__contacts" role="list">
+    @for (contact of data().contacts; track contact.id) {
+      <li class="resume-header__contact-item">
+        @if (contact.href) {
+          <a [href]="contact.href" class="resume-header__contact-link" [attr.aria-label]="contact.label">
+            <span class="resume-header__contact-label">{{ contact.label }}</span>
+            <span class="resume-header__contact-value">{{ contact.value }}</span>
+          </a>
+        } @else {
+          <span class="resume-header__contact-label">{{ contact.label }}</span>
+          <span class="resume-header__contact-value">{{ contact.value }}</span>
+        }
+      </li>
+    }
+  </ul>
+</header>

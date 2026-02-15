@@ -1,0 +1,211 @@
+.cv {
+  border: 1px solid rgba(0,0,0,0.05);
+  display: grid;
+  grid-template-columns: 32% 1fr;
+  gap: 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--bg-main);
+  position: relative;
+
+  &__theme-btn {
+    position: fixed;
+    top: var(--space-md);
+    right: var(--space-md);
+    z-index: 10;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    background: var(--bg-main);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+    &:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent-color);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 2px;
+    }
+  }
+
+  &__sidebar {
+    background: var(--bg-sidebar);
+    padding: var(--space-2xl) var(--space-lg) var(--space-2xl) var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  &__main {
+    padding: var(--space-2xl) var(--space-xl) var(--space-2xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  &__about {
+    margin: 0;
+    font-size: var(--font-size-body);
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  &__skills {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  &__skill-group {
+    margin: 0;
+  }
+
+  &__skill-group-title {
+    margin: 0 0 var(--space-sm);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+  }
+
+  &__skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-sm);
+  }
+
+  &__additional {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  &__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    row-gap: 16px;
+  }
+
+  &__edu {
+    padding-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
+
+    &:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &__edu-degree {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  &__edu-meta {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  &__print-btn {
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: var(--space-sm) var(--space-md);
+    color: #fff;
+    background: var(--accent-color);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.92;
+    }
+  }
+}
+
+// ——— Responsive: single column on mobile ———
+@media (max-width: 768px) {
+  .cv {
+    grid-template-columns: 1fr;
+    padding-top: 3rem;
+  }
+
+  .cv__sidebar {
+    padding: var(--space-xl) var(--space-lg);
+    order: 1;
+  }
+
+  .cv__main {
+    padding: 0 var(--space-lg) var(--space-2xl);
+    order: 2;
+  }
+}
+
+// ——— A4 printable ———
+@media print {
+  .cv {
+    grid-template-columns: 35% 1fr;
+    max-width: none;
+    min-height: auto;
+    gap: 0;
+  }
+
+  .cv__theme-btn,
+  .cv__footer {
+    display: none !important;
+  }
+
+  .cv__sidebar {
+    background: #f5f5f5 !important;
+    padding: 0.8cm 0.6cm 0.8cm 0.8cm;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cv__main {
+    padding: 0.8cm 0.8cm 0.8cm 0.6cm;
+  }
+
+  :host-context([data-theme='dark']) .cv__sidebar {
+    background: #f5f5f5 !important;
+  }
+
+  :host-context([data-theme='dark']) .cv__main,
+  :host-context([data-theme='dark']) .cv__sidebar * {
+    color: #1a1a1a !important;
+    border-color: #e5e7eb !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

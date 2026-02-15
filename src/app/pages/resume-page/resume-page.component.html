@@ -1,0 +1,67 @@
+<article class="cv">
+  <button
+    type="button"
+    class="cv__theme-btn"
+    (click)="toggleTheme()"
+    [attr.aria-label]="theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+    title="{{ theme() === 'dark' ? 'Light theme' : 'Dark theme' }}"
+  >
+    {{ theme() === 'dark' ? '☀️' : '🌙' }}
+  </button>
+
+  <aside class="cv__sidebar">
+    <app-resume-header [data]="header()" />
+    <app-resume-section title="Skills">
+      <div class="cv__skills">
+        @for (group of skills(); track group.id) {
+          <div class="cv__skill-group">
+            <h3 class="cv__skill-group-title">{{ group.title }}</h3>
+            <div class="cv__skill-list">
+              @for (item of group.items; track item) {
+                <app-skill-badge [label]="item" />
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </app-resume-section>
+    <app-resume-section title="Additional Info">
+      <p class="cv__additional">{{ additionalInfo() }}</p>
+    </app-resume-section>
+  </aside>
+
+  <main class="cv__main">
+    <app-resume-section title="About">
+      <p class="cv__about">{{ aboutMe() }}</p>
+    </app-resume-section>
+
+    <app-resume-section title="Work Experience">
+      <div class="cv__timeline">
+        @for (job of experience(); track job.id) {
+          <app-experience-item [data]="job" />
+        }
+      </div>
+    </app-resume-section>
+
+    <app-resume-section title="Projects">
+      <div class="cv__timeline">
+        @for (project of projects(); track project.id) {
+          <app-project-item [data]="project" />
+        }
+      </div>
+    </app-resume-section>
+
+    <app-resume-section title="Education">
+      @for (edu of education(); track edu.id) {
+        <div class="cv__edu">
+          <strong class="cv__edu-degree">{{ edu.degree }}</strong>
+          <span class="cv__edu-meta">{{ edu.institution }}, {{ edu.year }}</span>
+        </div>
+      }
+    </app-resume-section>
+
+    <footer class="cv__footer">
+      <button type="button" class="cv__print-btn" (click)="print()">Print / Save as PDF</button>
+    </footer>
+  </main>
+</article>

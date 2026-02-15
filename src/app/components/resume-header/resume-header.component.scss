@@ -1,0 +1,68 @@
+.resume-header {
+  &__name {
+    margin: 0 0 var(--space-xs);
+    font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--text-primary);
+  }
+
+  &__position {
+    margin: 0 0 var(--space-lg);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--accent-color);
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__contact-item {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  &__contact-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+
+  &__contact-label {
+    display: block;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    margin-bottom: 0.1rem;
+  }
+
+  &__contact-value {
+    color: var(--text-primary);
+    word-break: break-word;
+  }
+}
+
+@media (min-width: 769px) {
+  .resume-header__name {
+    font-size: 2.375rem; // 38px
+  }
+}
+
+@media print {
+  .resume-header__name {
+    font-size: 2rem;
+  }
+}
