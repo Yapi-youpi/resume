@@ -60,15 +60,15 @@ export const resumeData: ResumeData = {
   ],
 
   projects: [
-    // {
-    //   id: '1',
-    //   title: 'Design System & Component Library',
-    //   role: 'Lead',
-    //   period: '2023',
-    //   description: 'Internal design system with 40+ reusable components. Documentation with Storybook.',
-    //   link: 'https://design.example.com',
-    //   stack: ['Angular', 'Storybook', 'SCSS'],
-    // },
+    {
+      id: '1',
+      title: 'Генератор Валентинок',
+      role: 'Lead',
+      period: '2026',
+      description: 'Сервис для генерации и отправки электронных открыток',
+      link: 'https://valentine-eba48.web.app/',
+      stack: ['Angular', 'SCSS'],
+    },
     // {
     //   id: '2',
     //   title: 'Resume Builder (This Page)',
